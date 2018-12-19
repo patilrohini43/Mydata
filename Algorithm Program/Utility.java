@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Utility {
 
 	
 	BufferedReader br;
+	
 	
 	  public Utility()
 		{
@@ -299,6 +301,35 @@ public class Utility {
 			     
 			  
 		  }
+       
+//question java
+		public int binarySearch(int low,int high) {
+			
+			// TODO Auto-generated method stub
+			   if ((high - low) == 1)
+			   {
+				   return low;
+			   }
+          
+		        int mid = low + (high - low) / 2;
+		        
+		        System.out.println("number is less than "+ mid +"press 1 to Yes or press 0 to No");
+		        Scanner sc=new Scanner(System.in);
+		        
+		        int no=sc.nextInt();
+		        if(no==1)
+		        {
+		        	return binarySearch(low,mid);
+		        }
+		        else
+		        {
+		        	return binarySearch(mid,high);
+		        }
+		        
+		      
+			
+			
+		}
 		  
 
 		  

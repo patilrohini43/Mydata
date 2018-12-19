@@ -10,7 +10,15 @@ import java.util.Arrays;
 public class Utility {
 
 	
+	BufferedReader br;
 	
+	  public Utility()
+		{
+			br = new BufferedReader(new InputStreamReader(System.in));
+	
+		
+		}
+	  
 
 	//take input word
 		public String inputString(){
@@ -22,15 +30,7 @@ public class Utility {
 			}
 			return "";
 	}
-		BufferedReader br;
 		
-		  public Utility()
-			{
-				br = new BufferedReader(new InputStreamReader(System.in));
-		
-			
-			}
-		  
 		  
 		  
 		  
@@ -264,6 +264,44 @@ public class Utility {
 		    }
 
 			
+		  
+		  //BubbleSort Elements
+		  public static void BubbleSort(int arr[])
+		  {
+			  int temp;
+			  int num=arr.length;
+			  for(int i=0;i<num-1;i++)
+			  {
+				  
+				  for(int j=0;j<num-i-1;j++)
+			  {
+					  if(arr[j]>arr[j+1])
+					  {
+						  temp=arr[j];
+						  arr[j]=arr[j+1];
+						  arr[j+1]=temp;
+					  }
+				  }
+			  }	
+			  
+		  }
+		  
+		  public static void printList(int arr[])
+		  {
+			  int num=arr.length;
+			  
+		     System.out.println("Sorted list of numbers:");
+			  
+			    for(int i=0;i<num;i++)
+			    {
+			    	 System.out.println(arr[i]);
+			    }
+			     
+			  
+		  }
+		  
+
+		  
 		}
 			
 		

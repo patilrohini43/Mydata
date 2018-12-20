@@ -326,18 +326,36 @@ public class Utility {
 		        	return binarySearch(mid,high);
 		        }
 		        
-		      
-			
-			
 		}
-		  
+		
+		
+		static int i=0;
 
+		public static int total=0;
+		public static int cal(int money,int[]notes) {
+		    int rem;
+		    if (money==0) {
+		        return -1;
+		    }
+		    else {
+		        if (money>=notes[i]) {
+		            int countnotes=money/notes[i];
+		            rem=money % notes[i];
+		            money=rem;
+		            total+=countnotes;
+		            System.out.println(countnotes+" Notes of  "+notes[i]);
+		          
+		        }i++;
+		        return cal(money,notes);
+		      
+		      
+		    }
 		  
 		}
 			
 		
 
-
+}
 
 			
 

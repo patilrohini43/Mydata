@@ -1,55 +1,37 @@
+/*
+* Created by: BridgeLabz
+* Date 15/12/2018
+* Purpose:find the roots of the equation a*x*x + b*x + c.
+
+**/
+
 package all.program.com;
 
 import java.util.Scanner;
+
+import all.program.utility.Utility;
 
 public class Quadratic {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc=new Scanner(System.in);
-		double root1,root2,d;
-		System.out.println("Given Quadratic Equation =ax^2+bx+c");
+		Utility u=new Utility();
+	
+		//accept the value of a,b,c
 		System.out.println("Enter A value");
-		int a=sc.nextInt();
+		int a=u.inputInteger();
 		
 		System.out.println("Enter B value");
-		int b=sc.nextInt();
+		int b=u.inputInteger();
 		
 		System.out.println("Enter C value");
-		int c=sc.nextInt();
+		int c=u.inputInteger();
 		
+		//generate the equation
         System.out.println("Given quadratic equation:"+a+"x^2 + "+b+"x + "+c);
-		 d=b * b - 4 * a * c;
-		if(d>0)
-		{
-            System.out.println("Roots are real and unequal");
-
-            root1 = ( - b + Math.sqrt(d))/(2*a);
-
-            root2 = (-b - Math.sqrt(d))/(2*a);
-
-            
-            System.out.println("First Root"+root1);
-            System.out.println("First Root"+root2);
-            
-		}
-		
-		else if(d==0)
-		{
-			System.out.println("Roots are real and equal");
-
-             root1 = ( - b + Math.sqrt(d))/(2*a);
-             System.out.println("First Root"+root1);
-         
-		}
-		
-		else
-		{
-			System.out.println("Roots are imaginary");
-		}
-		
-		
-		
+        System.out.println("******Roots are*****");
+        //call root method and find roots
+		u.roots(a, b, c);
 		
 		
 	}

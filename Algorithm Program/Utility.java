@@ -425,8 +425,68 @@ public class Utility {
 			
 		}
 		
+		/**
+		 * 
+		 * @param c nonnegative number c given
+		 * @return the estimate of the square root of c
+		 */
+		public static double newTon(double c)
+		{
+			double epsilon = 1e-15; 
+			double t=epsilon;
+			
+			// repeatedly apply Newton update step until desired precision is achieved
+			while (Math.abs(t - c/t) > epsilon*t) 
+			{
+	            t = (c/t + t) / 2.0;
+	        }
+			 // the estimate of the square root of c
+			return t;
+			
+		}
 		
+		
+		/**
+		 *  we convert the given decimal input into a binary number with
+		 *  the help of division and modulus 
+		 * operations along with loops and if conditions to get the desired output.
+		 * @param n given decimal number
+		 * @return x is return the binary number 
+		 */
+		
+       public static String decimalTobinary(int n)
+       {
+    	
+		String x=" ";
+	
+		int count=0;
+    	   
+           while(n > 0)
 
+           {
+
+            int a = n % 2;
+
+               if(a == 1)
+
+               {
+
+                   count++;
+
+               }
+
+               x = x + "" + a;
+
+               n = n / 2;
+               
+               System.out.println("The power of 2^"+n);
+             
+
+           }
+		return x;
+		
+    	   
+       }
 }
 
 			

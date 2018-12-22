@@ -12,7 +12,8 @@ public class Utility {
 
 	
 	BufferedReader br;
-	
+
+
 	
 	  public Utility()
 		{
@@ -52,6 +53,24 @@ public class Utility {
 			
 		  }
 
+		  
+		  
+		  public Double inputDouble() {
+				// TODO Auto-generated method stub
+				try{
+					try{	
+						return Double.parseDouble(br.readLine());
+					}
+					catch(NumberFormatException n){
+						System.out.println(n.getMessage());	
+					}
+				}catch(IOException io){
+					System.out.println(io.getMessage());
+				}
+		        return (double) 0;
+				
+			
+			}
 			
 		  //check the string is anagram or not
 		  
@@ -218,7 +237,7 @@ public class Utility {
 		  
 		  
 		  
-		  
+		  //this method for display the palindrome 
 		  public static void palindrome()
 		  {
 			  
@@ -287,7 +306,7 @@ public class Utility {
 			  }	
 			  
 		  }
-		  
+		  //print the list od sorted
 		  public static void printList(int arr[])
 		  {
 			  int num=arr.length;
@@ -302,7 +321,7 @@ public class Utility {
 			  
 		  }
        
-//question java
+         //questionProgram method fo binary search
 		public int binarySearch(int low,int high) {
 			
 			// TODO Auto-generated method stub
@@ -329,8 +348,8 @@ public class Utility {
 		}
 		
 		
+		//defining the method of calculator for Vending machine
 		static int i=0;
-
 		public static int total=0;
 		public static int cal(int money,int[]notes) {
 		    int rem;
@@ -338,21 +357,74 @@ public class Utility {
 		        return -1;
 		    }
 		    else {
+		    	//check the money value
 		        if (money>=notes[i]) {
 		            int countnotes=money/notes[i];
 		            rem=money % notes[i];
 		            money=rem;
 		            total+=countnotes;
-		            System.out.println(countnotes+" Notes of  "+notes[i]);
+		            System.out.println(countnotes+" Notes of  "+notes[i]);//count the total number of notes
 		          
 		        }i++;
-		        return cal(money,notes);
+		        return cal(money,notes);   //return notes
 		      
 		      
 		    }
 		  
 		}
+		
+		/**
+		 * 
+		 * @param d is given for date
+		 * @param m is given for month 
+		 * @param y is given for year
+		 * @return day of the week from 1 to 7
+		 */
+		//date function use this formula to calculate d,m,y
+		public static int date(int d,int m,int y)
+		{
 			
+				int y0 = ((y - (14 - m) / 12));
+				int x = (y0 + y0 / 4 - y0 / 100 + y0 / 400);
+				int m0 = (m + 12 * ((14 - m) / 12) - 2);
+				int d0 = (((d + x + (31 * m0) / 12) % 7));
+		        return d0;
+		        
+		}
+	
+		/**
+		 * 
+		 * @param given the fahrenheit
+		 * @return converion in temperature
+		 */
+		
+		//calculate the Fahrenheit  temperature to Celsius
+		public static float tempConverSion(int fahrenheit)
+		{
+			float cel=((fahrenheit- 32) * 5/9) ;
+			return cel;
+			
+		}
+		
+		
+		/**
+		 * 
+		 * @param p for principal amount
+		 * @param r for rate
+		 * @param y for year
+		 * @return calculate the monthly payment 
+		 */
+		
+		public static double monthPayment(double p,double r,double y)
+		{
+			
+			double n = 12 * y;
+			double r0 = r / (12 * 100);
+			double payment = p * r0 / (1 - Math.pow((1 + r0), -n));
+	        return payment;
+			
+		}
+		
 		
 
 }

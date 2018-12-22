@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -460,9 +461,140 @@ else
 	 System.out.println("The formula is valid" +windChill);
 }
 return windChill;
+}
+
+//########################################TicTacTao############################################//
 
 
 
+public static void gameTictac(String name)
+{
+	//this board is an array to initailize play board
+	String[] board = new String[9];
+	String turn = "X";   //player Turn
+    String winner = null; //to check who is win
+    String player2; //name of player 2
+    
+    //calling this method to load the board instruction
+    isEmptyBoard(board);
+    
+    player2=name;
+    System.out.println("Board Insrtuction");
+    //this varible number to get player chosen number of slot
+    System.out.println("Enter slot number to place in");
+    printBoard(board);
+    int num;
+    turn="O";
+    //
+
+    //check the condition who is win assign the condition to enter input between o to n
+      //and they index filled
+	while (winner == null) {
+		
+		try {
+			  num=u.inputInteger();
+		
+			if (!(num > 0 && num <= 9)) {
+				System.out.println("Invalid input; re-enter slot number:");
+				continue;
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid input; re-enter slot number:");
+			continue;
+		}
+		if (board[num-1].equals(String.valueOf(num))) {
+			board[num-1] = turn;
+			if (turn.equals("X")) {
+				turn = "O";
+			} else {
+				turn = "X";
+			}
+			printBoard(board);
+			winner = checkWinner(board,turn);
+		} else {
+			System.out.println("Slot already taken; re-enter slot number:");
+			continue;
+		}
+	}
+	//check the who is win otherwise play again task
+	if (winner.equalsIgnoreCase("draw")) {
+		System.out.println("It's a draw! Thanks for playing.");
+	} else {
+		System.out.println("Congratulations! " + winner + "'s have won! Thanks for playing.");
+	}
+}
+
+//this are the condition to check  win or not
+public static String checkWinner(String[] board,String turn) {
+	for (int a = 0; a < 8; a++) {
+	
+		String line = null;
+		switch (a) {
+		case 0:
+			line = board[0] + board[1] + board[2];
+			break;
+		case 1:
+			line = board[3] + board[4] + board[5];
+			break;
+		case 2:
+			line = board[6] + board[7] + board[8];
+			break;
+		case 3:
+			line = board[0] + board[3] + board[6];
+			break;
+		case 4:
+			line = board[1] + board[4] + board[7];
+			break;
+		case 5:
+			line = board[2] + board[5] + board[8];
+			break;
+		case 6:
+			line = board[0] + board[4] + board[8];
+			break;
+		case 7:
+			line = board[2] + board[4] + board[6];
+			break;
+		}
+		if (line.equals("XXX")) {
+			return "X";
+		} else if (line.equals("OOO")) {
+			return "O";
+		}
+	}
+
+	for (int a = 0; a < 9; a++) {
+		
+		if (Arrays.asList(board).contains(String.valueOf(a+1))) {
+			break;
+		}
+		else if (a == 8) return "draw";
+	}
+
+	//String turn = "X";
+	System.out.println(turn + "'s turn; enter a slot number to place " + turn + " in:");
+	return null;
+}
+
+//This method is used to print the board 
+
+public static void printBoard(String[] board) {
+
+	System.out.println("/------|------|------\\");
+	System.out.println("| " + board[0] + " | " + board[1] + " | " + board[2] + " |");
+	System.out.println("|----------------------");
+	System.out.println("| " + board[3] + " | " + board[4] + " | " + board[5] + " |");
+	System.out.println("|----------------------");
+	System.out.println("| " + board[6] + " | " + board[7] + " | " + board[8] + " |");
+	System.out.println("/------|------|------\\");
+}
+
+//this is board instruction
+public static void isEmptyBoard(String[] board) {
+	for (int a = 0; a < 9; a++) {
+		
+		board[a] = String.valueOf(a+1);
+}
+	
 }
 
 
@@ -477,4 +609,25 @@ return windChill;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+

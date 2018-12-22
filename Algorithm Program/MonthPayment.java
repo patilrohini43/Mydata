@@ -1,3 +1,9 @@
+/*
+* Created by:Rohini Patil
+* Date 21/12/2018
+* Purpose:alculate monthlyPayment
+**/
+
 package all.algo.program;
 
 import all.program.utility.Utility;

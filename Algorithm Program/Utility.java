@@ -487,6 +487,100 @@ public class Utility {
 		
     	   
        }
+       
+
+       /**
+        * 
+        * @param n take the value from user side n
+        * @return the binary number which converted into int
+        */
+      public  static int[] toBinary(int n) {
+
+   		String x= "";
+   		while (n != 0) {
+   		x = (n % 2) + x;
+   			n/= 2;
+   		}
+   
+   		return stringToIntArray(x);
+   }
+       
+      
+   /** This Function is used for convert the String to Int
+    * 
+    * @param this x is declared as string but use this function to convert String to int
+    * @return they retrun int array value
+    */
+    public  static int[] stringToIntArray(String x) {
+   		int[] b = new int[x.length()];
+   		for (int i = 0; i < b.length; i++) {
+   			b[i] = x.charAt(i) - 48;
+   			//stem.out.println(b);
+   			
+   		}
+   		return b;
+   		}
+    
+   
+       
+    
+       //swap the decimal number
+    /**
+     * 
+     * @param arr is used for swap the array
+     * @return swapped array
+     */
+       public static int[] swap(int[] arr)
+       
+       {
+    	   int temp,j=arr.length-4;
+    	   for(int i=0;i<4;i++)
+    	   {
+    		   temp=arr[i];
+    		   arr[i]=arr[j];
+    		   arr[j]=temp;
+    		   j++;
+    		   
+    	   }
+		return arr;
+    	   
+       }
+       
+       
+    /**
+     * 
+     * @param arr print the array 
+     */
+   public static void showArr(int[] arr) {
+   		// System.out.println("array is ");
+   		for (int i = 0; i < arr.length; i++) {
+   			System.out.print(arr[i]);
+   		}
+   		System.out.println();
+   	}
+
+   
+   /**
+    *  
+    * @param binary to binary array converted
+    * @return decimal value 
+    */
+  public static int todecimal(int[] b)
+  {
+	  int dec = 0, j = 0;
+	for (int i = b.length - 1; i >= 0; i--) {    
+		if (b[i] == 1) {
+			dec = dec + (int) Math.pow(2, j);   //use math function for power of value
+		}
+		
+		j++;
+	}
+	return dec;
+}
+
+  
+
+       
 }
 
 			

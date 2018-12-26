@@ -1,3 +1,11 @@
+/*
+* Created by:Rohini Patil
+* Date 20/12/2018
+* Purpose:Search and Sorted List, More importantly print elapsed time
+performance in descending order
+
+**/
+
 package all.algo.program;
 
 import java.util.Arrays;
@@ -62,7 +70,7 @@ public class SortingProgram {
                 
              case 2:
             	 start=System.currentTimeMillis();
-					System.out.println("BinarySearch Integer Numbers");
+					System.out.println("BinarySearch String Numbers");
 					System.out.println("Enter size of Elements");
 					int arrSize1=u.inputInteger();
 			String e2[]=u.secondArray(arrSize1);
@@ -115,18 +123,33 @@ public class SortingProgram {
                  start=System.currentTimeMillis();
 					System.out.println("InsertationSort  For Integer Numbers");
 					System.out.println("Enter size of Elements");
-					int arrSize2=u.inputInteger();
-					String e3[]=u.secondArray(arrSize2);
-					u.prinStringArray(e3);
-				
-					System.out.println("Enter Key: ");
-					String[] k4=u.insertionSortString(e3);
-					System.out.println("Sorted Array is: ");
-
-					for(int i=0;i<k4.length;i++)
-					{
-						System.out.println(k4[i]);
-					}
+					int num=u.inputInteger();
+		
+	 	 
+		//create string array
+		String[] arr=new String[num];
+		//accept the value from user using array
+		for(int i=0;i<num;i++)
+		{
+			System.out.println("Enter array["+i+"] : ");
+			arr[i]=u.inputString();
+		}
+	       
+		
+		//display the given array
+				System.out.println("Given array:-");
+				 num=arr.length;
+			        for (int i=0; i<num;++i)
+		              System.out.print(arr[i] + " ");
+			        
+			     
+			        //call insertionSort String Method
+			      u.insertionSort(arr,num);
+			    	//display the sorted aaray
+			    		System.out.println("\nSorted array");
+			    		num = arr.length;
+			    	        for (int i=0; i<num;++i)
+			    	               System.out.print(arr[i] + " ");
 					end=System.currentTimeMillis();
 					elapsed=end-start;
 					System.out.println("Total Elapsed Time is: "+elapsed);
@@ -161,6 +184,31 @@ public class SortingProgram {
 					start=System.currentTimeMillis();
 					System.out.println("BubbleSort  For String");
 					System.out.println("Enter size of Elements");
+					int num1=u.inputInteger();
+					String[] arr1=new String[num1];
+					//accept the value from user using array
+					for(int i=0;i<num1;i++)
+					{
+						System.out.println("Enter array["+i+"] : ");
+						arr1[i]=u.inputString();
+					}
+
+					//display the given array
+							System.out.println("Given array:-");
+							 num1=arr1.length;
+						        for (int i=0; i<num1;++i)
+					              System.out.print(arr1[i] + " ");
+						        
+						      u.BubbleSortString(arr1);
+						        
+						      //display the sorted aaray
+					    		System.out.println("\nSorted array");
+					    		num1 = arr1.length;
+					    	        for (int i=0; i<num1;++i)
+					    	               System.out.print(arr1[i] + " ");
+						        
+					
+					/**
 					int arraySize1=u.inputInteger();
 					String s[]=u.secondArray(arraySize1);
                     u.prinStringArray(s);
@@ -173,6 +221,8 @@ public class SortingProgram {
 					{
 						System.out.println(k111[i]);
 					}
+					**
+					*/
 					end=System.currentTimeMillis();
 					elapsed=end-start;
 					System.out.println("Total Elapsed Time is: "+elapsed);
@@ -180,11 +230,9 @@ public class SortingProgram {
             	 
              
 
-             case 7: 
-					System.exit(0);
 			default:
-					System.out.println("Wrong Input");
-break;
+					System.out.println("Wrong choice please enter correct choice between 1 to 6");
+
              
              }
 		

@@ -147,7 +147,6 @@ public class Utility1 {
 				  
 				  for(int j=0;j<num1-i-1;j++)
 			  {
-					  //Open If Statement Compare and sort strings
 					  if(arr1[j].compareTo(arr1[j+1])>0)
 					  {
 						  temp=arr1[j];
@@ -159,25 +158,26 @@ public class Utility1 {
 			 
 		  }
 		  
-		  
-		  //Binary Search
-			public int binarySearch(int[] inputArr, int key) {
-		        int start = 0;
-		        int end = inputArr.length - 1;
-		        while (start <= end) {
-		            int mid = (start + end) / 2;
-		            if (key == inputArr[mid]) {
-		                return mid;
-		            }
-		            if (key < inputArr[mid]) {
-		               	end = mid - 1;
-		            } else {
-		               	start = mid + 1;
-		            }
-		        }
-		        return -1;
-		}
+		  //binary search methods
+		  public int binarySearch(int[] arr, int size,int search) {
+			    int start = 0;
+			    int end = size - 1;
 
+			    while (start <= end) {
+			        int mid = (start + end) / 2;
+			        if (arr[mid] == search) {
+			            return mid;
+			        } else if (arr[mid] < search) {
+			            end = mid - 1;
+
+			        } else {
+			            start = mid + 1;
+			        }
+			    }
+
+			    return -1;
+
+			}
 
 			
 			//Binary Search for String

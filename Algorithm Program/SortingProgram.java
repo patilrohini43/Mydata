@@ -44,14 +44,12 @@ public class SortingProgram {
 					System.out.println("BinarySearch Integer Numbers");
 					System.out.println("Enter size of Elements");
 					int arrSize=u.inputInteger();
-					int e[]=u.firstArray(arrSize);
-					Arrays.sort(e);
-					u.firstArray(arrSize);
-					
+					int[]arr3=u.firstArray(arrSize);
+					int size = arr3.length;
 				
-					System.out.println("Enter Key: ");
-					int k= u.binarySearch(e,u.inputInteger());
-					//System.out.println("Sorted Array is: ");
+					System.out.println("Enter Key:");
+					int search=u.inputInteger();
+				    int k = u.binarySearch(arr3, size,search);
 
 					if(k==-1)
 					{
@@ -59,7 +57,7 @@ public class SortingProgram {
 					}
 					else
 					{
-						System.out.println("Found at "+k+" position");
+						System.out.println("Found at "+k+" psition");
 }
 					end=System.currentTimeMillis();
 					elapsed=end-start;
@@ -70,12 +68,12 @@ public class SortingProgram {
                 
              case 2:
             	 start=System.currentTimeMillis();
-					System.out.println("BinarySearch String Numbers");
+					System.out.println("BinarySearch String");
 					System.out.println("Enter size of Elements");
-					int arrSize1=u.inputInteger();
-			String e2[]=u.secondArray(arrSize1);
+			 		int arrSize1=u.inputInteger();
+			        String e2[]=u.secondArray(arrSize1);
 					Arrays.sort(e2);
-					u.firstArray(arrSize1);
+					//u.firstArray(arrSize1);
 					
 				
 					System.out.println("Enter Key: ");
@@ -106,7 +104,7 @@ public class SortingProgram {
 					int e1[]=u.firstArray(arrSize11);
 					u.printIntArray(e1);
 				
-					System.out.println("Enter Key: ");
+				
 					int k3[]=u.insertionSort(e1);
 					System.out.println("Sorted Array is: ");
 
@@ -231,7 +229,7 @@ public class SortingProgram {
              
 
 			default:
-					System.out.println("Wrong choice please enter correct choice between 1 to 6");
+					System.out.println("Wrong");
 
              
              }

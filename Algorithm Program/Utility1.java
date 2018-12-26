@@ -137,25 +137,26 @@ public class Utility1 {
 		  
 	   //
 
-		  //BubbleSort Elements for Numbers
-		  public String[] BubbleSortString(String arr[])
+		  //BubbleSort Elements for String
+		  public void BubbleSortString(String arr1[])
 		  {
 			  String temp;
-			  int num=arr.length;
-			  for(int i=0;i<num-1;i++)
+			  int num1=arr1.length;
+			  for(int i=0;i<num1-1;i++)
 			  {
 				  
-				  for(int j=0;j<num-i-1;j++)
+				  for(int j=0;j<num1-i-1;j++)
 			  {
-					  if(arr[j].compareTo(arr[j+1])<0)
+					  //Open If Statement Compare and sort strings
+					  if(arr1[j].compareTo(arr1[j+1])>0)
 					  {
-						  temp=arr[j];
-						  arr[j]=arr[j+1];
-						  arr[j+1]=temp;
+						  temp=arr1[j];
+						  arr1[j]=arr1[j+1];
+						  arr1[j+1]=temp;
 					  }
 				  }
 			  }	
-			  return arr;
+			 
 		  }
 		  
 		  
@@ -220,30 +221,35 @@ public class Utility1 {
 			}
 			
 			
-			//Insertion sort for String
-	
-			public String[] insertionSortString(String arr[]) 
-		    { 
-		        int n = arr.length; 
-		        for (int i=1; i<n; ++i) 
-		        { 
-		            String key = arr[i]; 
-		            int j = i-1; 
-		  
-		           
-		            while (j>=0)
-		            {
-		            	  if(key.compareTo(arr[j])<0)
-			            { 
-			                arr[j+1] = arr[j]; 
-			                j = j-1; 
-			            } 
-			            arr[j+1] = key; 
-		            }
-		             
-		        }
-				return arr; 
-			}
+			
+			
+			/* Function to sort an array using insertion sort*/
+			/**
+			 * 
+			 * @param arr sort an arr[] of size num
+			 * insertionSort(arr,n)]
+			 * loop from i=1 to n-1
+			 * pick the element arr[i] and sorted into i-1
+			 * @param num
+			 */
+			public void insertionSort(String arr[], int num) 
+			{ 
+			   int i, j;
+			String key; 
+			   for (i = 1; i < num; i++) 
+			   { 
+			       key = arr[i]; 
+			       j = i-1; 
+			  
+			       while (j >= 0 && arr[j].compareToIgnoreCase(key) > 0)
+			       { 
+			           arr[j+1] = arr[j]; 
+			           j = j-1; 
+			       } 
+			       arr[j+1] = key; 
+			   } 
+			} 
+			  
 			
 			
 			//merge Sort Elements
@@ -267,7 +273,13 @@ public class Utility1 {
 				}
 				
 			}
-
+/** Sort the String using merge
+ * 
+ * @param merge the subarrays of arr
+ * @param l left of array
+ * @param m middle
+ * @param r right of array
+ */
 			public static void merge(String arr[], int l, int m, int r) {
 				// TODO Auto-generated method stub
 				
@@ -307,7 +319,7 @@ public class Utility1 {
 			            k++; 
 			        } 
 			  
-			        /* Copy remaining elements of L[] if any */
+			        //Copy remaining elements of L[] if any 
 			        while (i < n1) 
 			        { 
 			            arr[k] = L[i]; 
@@ -315,15 +327,16 @@ public class Utility1 {
 			            k++; 
 			        } 
 			  
-			        /* Copy remaining elements of R[] if any */
+			        // Copy remaining elements of R[] if any 
 			        while (j < n2) 
 			        { 
 			            arr[k] = R[j]; 
 			            j++; 
 			            k++; 
 			        } 
-			    } 
-				
+			    }
+
+			
 			
 			
 }

@@ -20,9 +20,11 @@ public class PerMutation {
     	//get the string from user
     	System.out.println("Enter the String You Want:-");
     	String str=u.inputString();    
-    	
-    	//call permutation method 
-        System.out.println("\n Permutations for " + str + " are: \n" +u.permutationFinder(str));
+    	int n=str.length();
+   
+		//call permutation method 
+        u.permute(str, 0, n-1);
+       // System.out.println("\n Permutations for " + str + " are: \n" +u.permutationFinder(str));
        
     }
 }

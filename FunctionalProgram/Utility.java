@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -101,6 +102,7 @@ public class Utility {
 				}
 			}
 			//display percentage using this formula
+			System.out.println(heads);
 			System.out.println("heads percentage is " + (float) (heads / times) * 100);
 			System.out.println("tails percentage is " + (float) (times - heads) / times * 100);
 	}
@@ -117,11 +119,15 @@ public class Utility {
 	    }
 		
 		//This function is used to find the prime number
+		/**
+		 * 
+		 * @param n take the number from user
+		 */
 		public static void primeNum(int n) {
 			
 	        while (n%2==0) 
 	        { 
-	            System.out.print(2 + " "); 
+	            System.out.print( 2 +" "); 
 	            n /= 2; 
 	        } 
 	  
@@ -131,15 +137,15 @@ public class Utility {
 	            // While i divides n, print i and divide n 
 	            while (n%i == 0) 
 	            { 
-	                System.out.print(i + " "); 
+	               //System.out.print(i + ""); 
 	                n /= i; 
 	            } 
 	        } 
 	  
-	        // This condition is to handle the case whien 
+	        // This condition is to handle the case when 
 	        // n is a prime number greater than 2 
-	        if (n > 2) 
-	            System.out.print(n); 
+	       if (n > 2) 
+	           System.out.print(n); 
 		}
 
 		
@@ -150,20 +156,22 @@ public class Utility {
         
         	int bets = 0;        // total number of bets made
             int wins = 0;        // total number of games won 
-        /**
-         *  repeat trials times
-         */
+        
+          //repeat trials times
+        
         for (int t = 0; t < trials; t++) {
 
-            /**
-             * do one gambler's ruin simulation
-             */
+            
+             // do one gambler's ruin simulation
+             
             int cash = stake;
             while (cash > 0 && cash < goal) {
                 bets++;
                 
-                if (Math.random() < 0.5) cash++;     // win $1
-                else                     cash--;     // lose $1
+                if (Math.random() < 0.5)
+                	cash++;     // win $1
+                else                    
+                	cash--;     // lose $1
             }
             if (cash == goal) 
             	wins++;                // did gambler go achieve desired goal?
@@ -189,7 +197,57 @@ public class Utility {
 		}
         
         
+        
+        //This function is used for finding year is leap or not
+        /**
+         * 
+         * @param year take the input from user
+         * @return check and return the year is leap or not
+         */
+        public static int leapYear(int year)
+        {
+
+    		boolean flag=true;
+    		if(year % 400 ==0)
+    		{
+    			flag=true;
+    		}
+    		else if(year % 100 == 0)
+    		{
+    			flag=false;
+    		}
+    		else if(year % 4 == 0)
+    		{
+    			flag=true;
+    		}
+    		else
+    		{
+    			flag=false;
+    		
+    		}
+    		
+    		 //if condition is satisfy the print leap year else not 
+    		 
+    		if(flag)
+    		{
+    			System.out.println("year " +year +" this is leap year");
+    			
+    		}
+    		else
+    		{
+    			System.out.println(" year " +year+" this is not leap year");
+    			
+    		}
+			return year;
+        }
+        
+        
         //This function check prime number
+        /**
+         * 
+         * @param i take the input from user
+         * @return check number is prime or not
+         */
         public static boolean isPrime(int i)
     	{
     		for(int j=2;j<i;j++)
@@ -205,6 +263,11 @@ public class Utility {
     	}
 		
 		//This function is used to generate coupen value random
+        /**
+         * 
+         * @param str take the input from user
+         * @return generated random coupen code
+         */
 		public static String coupen(String str)
 		{
 		
@@ -213,9 +276,9 @@ public class Utility {
 		//length of coupen limit 
 	    int max=100000;
 
-	    /**
-	     *  return a random coupon between 0 and n-1
-	     */
+	  
+	     // return a random coupon between 0 and n-1
+	    
 	    int random=(int) (Math.random()*max);	
 	    /**
 	     * Creates a StringBuffer 
@@ -226,12 +289,12 @@ public class Utility {
 		
 		while (random>0)
 		{
-			/**
-			 * it will iterate till value of random not become to 0
-			 */
+			
+			//t will iterate till value of random not become to 0
+		
 			sb.append(chars[random % chars.length]);
 			random /= chars.length;
-			System.out.println(random + "  " + random % chars.length + " sb is " + sb);
+			System.out.println(random + "  " + random % chars.length + "  is " + sb);
 		}
 		////value of sb assign to the coupen code varible
 			String couponCode=sb.toString();
@@ -366,18 +429,23 @@ public double distance1(int x1, int y1, int x2, int y2) {
 
 
 //this function is find the permutation string
+/**
+ * 
+ * @param str take the input from user
+ * @returns the generated permutation numbers
+ */
 public static Set<String> permutationFinder(String str) {
 	
-    Set<String> sa = new HashSet<String>();
+    Set<String> perm = new HashSet<String>();
     //Handling error scenarios
     if (str == null) {
         return null;
     } else if (str.length() == 0) {
-        sa.add("");
-        return sa;
+        perm.add("");
+        return perm;
     }
     /**
-     * First char = A and remaining chars permutations are BC and CB.
+     * first char = A and remaining chars permutations are BC and CB.
        Now we can insert first char in the available positions in the permutations.
       BC -> ABC, BAC, BCA
         CB -> ACB, CAB, CBA
@@ -387,10 +455,85 @@ public static Set<String> permutationFinder(String str) {
     Set<String> words = permutationFinder(rem);
     for (String strNew : words) {
         for (int i = 0;i<=strNew.length();i++){
-            sa.add(u.charInsert(strNew, initial, i));
+            perm.add(u.charInsert(strNew, initial, i));
         }
     }
-    return sa;
+    return perm;
+}
+
+
+
+
+
+//________________________________________________________________________//
+
+/** 
+ * permutation function 
+ * @param str string to calculate permutation for 
+ * @param l starting index 
+ * @param r end index 
+ */
+public void permute(String str, int l, int r) 
+{ 
+    if (l == r)    //check the 
+        System.out.println(str); 
+    else
+    { 
+        for (int i = l; i <= r; i++) 
+        { 
+            str = swap(str,l,i); //A swap the A permutation like as A A,A B
+            permute(str, l+1, r); //A is fixed the position ABC 1,2 ,then B is fixed BAC 1,2
+            str = swap(str,l,i); //swap the permutation A A,then swap B A
+        } 
+    } 
+} 
+
+/** 
+ * Swap Characters at position 
+ * @param a string value 
+ * @param i position 1 
+ * @param j position 2 
+ * @return swapped string 
+ */
+public String swap(String a, int i, int j) 
+{ 
+    char temp; 
+    char[] charArray = a.toCharArray(); 
+    temp = charArray[i] ; 
+    charArray[i] = charArray[j]; 
+    charArray[j] = temp; 
+    return String.valueOf(charArray); 
+} 
+
+//___________________________________________________________________//
+
+/**
+ * 
+ * @param num take the input from user
+ * @return power of 2
+ */
+public static int power(int num)
+{
+	int i=0;
+	int powerOfTwo=1;
+
+
+// check the number is greater than num
+ 
+while
+	(i<=num)
+{
+	
+	// print the power of 2
+	
+	System.out.println(i + " " + powerOfTwo);  
+
+	// get the double to next
+	 
+	powerOfTwo = 2 * powerOfTwo; 
+      i = i + 1;
+}
+return powerOfTwo;
 }
 
 
@@ -433,6 +576,41 @@ public static void roots(int a, int b, int c) {
  
 
 }
+
+///////////////////////////////////////////////////////////////////////
+
+public static int findDistinctTriplets(int b[],int length)
+{
+	
+	System.out.println();
+	int i,j,k,count=0;
+	for(i=0;i<length;i++)
+	{
+		for(j=i+1;j<length;j++)
+		{
+			for(k=j+1;k<length;k++)
+			{
+				
+				if (b[i] + b[j] + b[k] == 0)
+				{
+					System.out.println(b[i] + " " + b[j] + " " + b[k]);
+					count++;
+				}
+			}
+		}
+	}
+	
+	return count;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
 
 /**
  *  this function for windchill check the formula of windchill is valued or not
@@ -484,7 +662,7 @@ public static void gameTictac(String name)
     System.out.println("Enter slot number to place in");
     printBoard(board);
     int num;
-    turn="O";
+    turn="0";
     //
 
     //check the condition who is win assign the condition to enter input between o to n
@@ -492,8 +670,21 @@ public static void gameTictac(String name)
 	while (winner == null) {
 		
 		try {
+			
+			if(turn.equalsIgnoreCase("0"))
+			{
+			Random rn = new Random();	
+			num=rn.nextInt(10);
+			System.out.println("Computer choosed slot number"+num);
+			
+				
+			}
+			else
+			{
+			
+			
 			  num=u.inputInteger();
-		
+			}
 			if (!(num > 0 && num <= 9)) {
 				System.out.println("Invalid input; re-enter slot number:");
 				continue;
@@ -505,7 +696,7 @@ public static void gameTictac(String name)
 		if (board[num-1].equals(String.valueOf(num))) {
 			board[num-1] = turn;
 			if (turn.equals("X")) {
-				turn = "O";
+				turn = "0";
 			} else {
 				turn = "X";
 			}
